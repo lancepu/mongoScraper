@@ -21,6 +21,10 @@ app.use(express.json());
 app.use("/scrape", scrape);
 app.use("/comments", comments);
 app.use("/", posts);
+//CATCH ALL FOR UNSPECIFIED ROUTES
+app.use((req, res) => {
+  res.render("notFound");
+});
 
 app.listen(PORT, function() {
   console.log("Server listening on: http://localhost:" + PORT);
