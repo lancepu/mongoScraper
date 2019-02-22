@@ -1,6 +1,8 @@
 $(document).ready(function() {
   $(".savePost").on("click", async function() {
-    const postId = $(this).attr("postId");
+    const postId = $(this)
+      .parent(".cardBtnGroup")
+      .attr("postId");
     console.log(postId);
     try {
       await $.ajax({

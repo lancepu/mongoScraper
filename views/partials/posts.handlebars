@@ -10,11 +10,10 @@
                         src="/assets/img/Reddit-icon.png"></a>
                 {{/if}}
             </div>
-            <div class="col-3">
+            <div class="col-3 cardBtnGroup" postId={{_id}}>
                 {{#if saved}}
-                <button type="button" class="btn btn-success" disabled>Saved</button>
-                {{else}}
-                <button class="btn btn-primary savePost" postId={{_id}}>Save Post</button>
+                <button type="button" class="btn btn-success savePost">Unsave</button>
+                {{else}} <button class="btn btn-primary savePost">Save Post</button>
                 {{/if}}
             </div>
         </div>

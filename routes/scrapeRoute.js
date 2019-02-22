@@ -24,13 +24,14 @@ router.get("/", async (req, res) => {
       .children("a")
       .children("img")
       .attr("src");
+    let saved = false;
 
     //ADD THE REDDIT DOMAIN FOR LINKS THAT LEAD TO SUBREDDITS
     link.indexOf("/r/") !== -1 ? (link = `${url}${link}`) : link;
 
     //ADD HTTPS: TO THE THUMBNAIL LINKS
     thumbnail ? (thumbnail = `https:${thumbnail}`) : null;
-    redditPost = { title, link, thumbnail };
+    redditPost = { title, link, thumbnail, saved };
 
     //ADD THE POST TO DB
     try {

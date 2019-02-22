@@ -34,13 +34,12 @@ router.get("/:id", async (req, res) => {
 });
 
 router.put("/save/:id", async (req, res) => {
+  // TOGGLES BETWEEN SAVE AND UNSAVE
   try {
-    const post = await Post.findOneAndUpdate(
-      { _id: req.params.id },
-      { saved: true }
-    );
+    const post = await Post.findOne({ _id: req.params.id });
+    await Post.findOneAndUpdate({ _id: req.params.id }, { saved: !post.saved });
     if (!post) return res.status(404).send(NotFound);
-    res.status(200).send(post);
+    res.status(200).end();
   } catch (ex) {
     res.status(500).send("Server Error");
   }
