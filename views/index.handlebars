@@ -1,0 +1,13 @@
+<div class="row">
+    {{#if posts}}
+    {{#each posts}}
+    <div class="col-12 mb-3">
+        {{> posts}}
+    </div>
+    {{/each}}
+    {{else}}
+    <div class="col-12 mb-3">
+        {{> noPost}}
+    </div>
+    {{/if}}
+</div>
