@@ -1,13 +1,13 @@
 <div class="card">
-    <h5 class="card-header"><a href={{post.link}}>{{post.title}}</a></h5>
+    <h5 class="card-header"><a href={{post.link}} target="_blank">{{post.title}}</a></h5>
     <div class="card-body">
         <div class="row">
             <div class="col">
                 {{#if post.thumbnail}}
-                <a href={{post.link}}><img class="img-responsvie" style="width: 130px; height: 130px;"
+                <a href={{post.link}} target="_blank"><img class="img-responsvie" style="width: 130px; height: 130px;"
                         src={{post.thumbnail}}></a>
                 {{else}}
-                <a href={{post.link}}><img class="img-responsvie" style="width: 130px; height: 130px;"
+                <a href={{post.link}} target="_blank"><img class="img-responsvie" style="width: 130px; height: 130px;"
                         src="/assets/img/Reddit-icon.png"></a>
                 {{/if}}
             </div>
