@@ -17,6 +17,9 @@ const PostSchema = new Schema(
     thumbnail: {
       type: String
     },
+    saved: {
+      type: Boolean
+    },
     comment: {
       type: Schema.Types.ObjectId,
       ref: "Comment"

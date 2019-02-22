@@ -7,7 +7,16 @@ const NotFound = "Post not found, it may have been removed";
 
 router.get("/", async (req, res) => {
   try {
-    const posts = await Post.find({}).sort({ updatedAt: "ascending" });
+    const posts = await Post.find({}).sort({ updatedAt: "desc" });
+    res.status(200).render("index", { posts });
+  } catch (ex) {
+    res.status(500).send("Server Error");
+  }
+});
+
+router.get("/saved", async (req, res) => {
+  try {
+    const posts = await Post.find({ saved: true }).sort({ updatedAt: "desc" });
     res.status(200).render("index", { posts });
   } catch (ex) {
     res.status(500).send("Server Error");
@@ -17,6 +26,19 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const post = await Post.findOne({ _id: req.params.id }).populate("comment");
+    if (!post) return res.status(404).send(NotFound);
+    res.status(200).send(post);
+  } catch (ex) {
+    res.status(500).send("Server Error");
+  }
+});
+
+router.put("/save/:id", async (req, res) => {
+  try {
+    const post = await Post.findOneAndUpdate(
+      { _id: req.params.id },
+      { saved: true }
+    );
     if (!post) return res.status(404).send(NotFound);
     res.status(200).send(post);
   } catch (ex) {

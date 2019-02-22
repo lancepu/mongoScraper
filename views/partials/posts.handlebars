@@ -2,7 +2,7 @@
     <h5 class="card-header"><a href={{link}}>{{title}}</a></h5>
     <div class="card-body">
         <div class="row">
-            <div class="col-6">
+            <div class="col-9">
                 {{#if thumbnail}}
                 <a href={{link}}><img class="img-responsvie" style="width: 130px; height: 130px;" src={{thumbnail}}></a>
                 {{else}}
@@ -10,8 +10,12 @@
                         src="/assets/img/Reddit-icon.png"></a>
                 {{/if}}
             </div>
-            <div class="col-6">
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="col-3">
+                {{#if saved}}
+                <button type="button" class="btn btn-success" disabled>Saved</button>
+                {{else}}
+                <button class="btn btn-primary savePost" postId={{_id}}>Save Post</button>
+                {{/if}}
             </div>
         </div>
     </div>
