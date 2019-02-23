@@ -50,7 +50,7 @@ router.post("/:id", async (req, res) => {
     const comment = await Comment.create(req.body);
     const post = await Post.findOneAndUpdate(
       { _id: req.params.id },
-      { comment: comment._id },
+      { $push: { comment: comment._id } },
       { new: true }
     );
     if (!post) return res.status(404).render("notFound");

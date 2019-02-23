@@ -20,10 +20,12 @@ const PostSchema = new Schema(
     saved: {
       type: Boolean
     },
-    comment: {
-      type: Schema.Types.ObjectId,
-      ref: "Comment"
-    }
+    comment: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Comment"
+      }
+    ]
   },
   { timestamps: { createdAt: "created_at" } }
 );
