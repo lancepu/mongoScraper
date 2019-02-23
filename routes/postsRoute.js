@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
 
 router.get("/saved", async (req, res) => {
   try {
-    const posts = await Post.find({ saved: true }).sort({ created_at: "desc" });
+    const posts = await Post.find({ saved: true }).sort({ updatedAt: "desc" });
     res.status(200).render("savedIndex", { posts });
   } catch (ex) {
     res.status(500).render("notFound");
