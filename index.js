@@ -11,7 +11,7 @@ const app = express();
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 mongoose.connect(
-  process.env.MONGODB_URL || "mongodb://localhost/mongoScraper",
+  process.env.MONGODB_URI || "mongodb://localhost/mongoScraper",
   { useNewUrlParser: true }
 );
 
